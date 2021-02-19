@@ -2,10 +2,9 @@
   "name": "scattegories",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
     "dev": "webpack-dev-server --open",
-    "build": "webpack",
     "start": "node server.js",
     "heroku-postbuild": "webpack -p"
   },
