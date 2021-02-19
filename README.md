@@ -1,0 +1,1 @@
+this is the client side of the scattegories app. I separated them out for deployment.
