@@ -1,6 +1,7 @@
 import io from 'socket.io-client';
-import { URL } from './config';
+import { localURL } from './config';
 
-let socket = io.connect(URL);
+const url = process.env.URL || localURL
+let socket = io.connect(url);
 
 export default socket;
