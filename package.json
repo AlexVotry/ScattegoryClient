@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open",
-    "build": "webpack"
+    "dev": "webpack-dev-server --open",
+    "build": "webpack",
+    "start": "node server.js",
+    "heroku-postbuild": "webpack -p"
   },
   "keywords": [],
   "author": "",
@@ -27,7 +29,9 @@
   },
   "dependencies": {
     "css-loader": "^5.0.1",
+    "express": "^4.17.1",
     "lodash": "^4.17.20",
+    "path": "^0.12.7",
     "react": "^16.11.0",
     "react-custom-scrollbars": "^4.2.1",
     "react-select": "^3.1.0",
