@@ -63,10 +63,10 @@ function WebSocketUtility() {
         socket.emit('myTeam', team);
       })
 
-    socket.on('gameState', gameState => {
+    socket.on('gameState', newGameState => {
       console.log('gamestate:', gameState)
-      if (prevGameState !== gameState) {
-        setGameState(gameState);
+      if (newGameState !== gameState) {
+        setGameState(newGameState);
       }
     });
 
