@@ -1,6 +1,6 @@
 // displays the letter we use to choose the words for scategory list
 
-import React, {useState, useContext} from 'react';
+import React from 'react';
 import LetterContext from '../../contexts/LetterContext';
 import './letter.css';
 

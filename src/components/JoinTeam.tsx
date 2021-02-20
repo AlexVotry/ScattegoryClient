@@ -1,6 +1,6 @@
 // form to join team
-
 import React, {useState, useContext} from 'react';
+
 import socket from '../service/socketConnection';
 import UserContext from '../contexts/UserContext';
 
@@ -13,18 +13,18 @@ const JoinTeam = () => {
   const [checkedIn, setCheckedIn] = useState(false);
   const [gActive, setGActive] = useState('');
   const [nActive, setNActive] = useState('');
-  const [eActive, setEActive] = useState('');
+  // const [eActive, setEActive] = useState('');
   const user = useContext(UserContext);
 
   const handleChange = (e) => {
     setAdmin(e.target.checked);
   }
 
-  const bypassSignin = e => {
-    setCheckedIn(e.target.checked);
-    socket.emit('initJoin', localState);
-    user.update(localState);
-  }
+  // const bypassSignin = e => {
+  //   setCheckedIn(e.target.checked);
+  //   socket.emit('initJoin', localState);
+  //   user.update(localState);
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,26 +32,25 @@ const JoinTeam = () => {
     socket.emit('joinTeam', formInfo);
     user.update(formInfo);
     localStorage.removeItem('userInfo');
-    console.log('before:', localStorage.getItem("userInfo"))
     localStorage.setItem('userInfo', JSON.stringify(formInfo));
   }
 
   const checkPlaceholder = () => {
     if (!group) setGActive('');
     if (!name) setNActive('');
-    if (!email) setEActive('');
+    // if (!email) setEActive('');
   }
 
   return (
     <div className="row joinTeam">
 
       <form className="col s12" onSubmit={handleSubmit}>
-        <div>
+        {/* <div>
           <p>
             <input className="with-gap" name="checkedIn" type="checkbox" id="checkedIn" onChange={bypassSignin} />
             <label htmlFor="checkedIn">Already joined a team</label>
           </p>
-        </div>
+        </div> */}
         <div className="input-field col s12">
           <input id="group"
             type="text"

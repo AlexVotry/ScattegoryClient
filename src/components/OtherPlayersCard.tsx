@@ -1,21 +1,14 @@
 // shows the scategory list (PlayerList component), letter, timer, and control buttons for each team. 
-
-import React, { useContext, useEffect, useState, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
+
 import OthersGameSheet from './OthersGameSheet';
-import Timer from './Timer';
-import Letter from './Letter/Letter';
-import ControlButtons from './ControlButtons';
 import UserContext from '../contexts/UserContext';
 import TeamsContext from '../contexts/TeamsContext';
 import { styles, colors } from '../cssObjects';
 import { findOthers } from '../service/parseTeams';
-import socket from '../service/socketConnection';
 
 const OtherPlayersCard = ({messages}) => {
-  console.log('otherplayingcard')
-  // const [teammates, setTeammates] = useState([]);
-  // const [messages, setMessages] = useState([]);
   const { user } = useContext(UserContext);
   const [teams, setTeams] = TeamsContext.useTeams();
   const team = teams[user.team];
@@ -61,7 +54,6 @@ const OtherPlayersCard = ({messages}) => {
   }
   
   const renderOtherGameCard = () => {
-    console.log('other length:', others.length)
     if (!others.length) return <div></div>;
     return (
       <div id="otherPlayers" className="otherPlayers" style={cardStyle} >

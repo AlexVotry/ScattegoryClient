@@ -1,15 +1,15 @@
 // shows the scategory list for each team.
 
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
+
 import CategoryContext from '../contexts/CategoryContext';
 import UserContext from '../contexts/UserContext';
 import TeamsContext from '../contexts/TeamsContext';
 import UserAnswersContext from '../contexts/UserAnswersContext';
-import { colors, styles } from '../cssObjects';
 import socket from '../service/socketConnection';
+import { colors, styles } from '../cssObjects';
 import { pad } from '../service/strings';
-import { updateUserAnswers } from '../service/updateAnswers';
 import { findOthers } from '../service/parseTeams';
 
 const GameSheet = () => {

@@ -30,7 +30,6 @@ function WebSocketUtility() {
   const [otherGuesses, setOtherGuesses] = OtherGuessesContext.useOtherGuesses();
 
   const [gameState, setGameState] =GameStateContext.useGameState();
-  const [prevGameState, setprevGameState] = useState('');
   const [currentLetter, setCurrentLetter] = LetterContext.useLetter();
   const [categories, setCategories] = CategoryContext.useCategpry();
   const [timer, setTimer] = TimerContext.useTimer();
@@ -64,10 +63,7 @@ function WebSocketUtility() {
       })
 
     socket.on('gameState', newGameState => {
-      // console.log('gamestate:', gameState)
-      // if (newGameState !== gameState) {
         setGameState(newGameState);
-      // }
     });
 
     socket.on('updateMessage', newMessages => {
@@ -88,6 +84,7 @@ function WebSocketUtility() {
         }
       })
       setFinalAnswers(finalSubmissions);
+      setMessages([]);
     });
 
     socket.on('startOver', numOfCategories => {
@@ -104,6 +101,7 @@ function WebSocketUtility() {
     socket.on('updateAnswers', newGuesses => {
       setOtherGuesses(newGuesses);
     })
+    
   }
 
   return (

@@ -1,6 +1,6 @@
 // displays the list of teams and the players on each team.
+import React from 'react';
 
-import React, { useContext, useMemo } from 'react';
 import TeamsContext from '../contexts/TeamsContext';
 import TeamScoreContext from '../contexts/TeamScoreContext';
 import { colors, styles } from '../cssObjects';
@@ -37,9 +37,11 @@ function TeamList(): JSX.Element {
 
   const parseTeamMembers = (members) => {
     return members.map(member => {
-      return (
-        <li key={member.name} style={{marginRight: '30px'}}>{member.name}</li>
-      )
+      if (typeof member !== "number") {
+        return (
+          <li key={member.name} style={{marginRight: '30px'}}>{member.name}</li>
+        )
+      }
     })
   }
   

@@ -8,10 +8,10 @@ import Settings from './Settings';
 import JoinTeam from './JoinTeam';
 import TeamList from './TeamList';
 import AllUsersList from './AllUsersList';
+
 import UserContext from '../contexts/UserContext';
 import FinalAnswersContext from '../contexts/FinalAnswersContext';
 import TeamScoreContext from '../contexts/TeamScoreContext';
-
 import socket from '../service/socketConnection';
 import { resetAnswersAndScores } from '../service/reset'
 import {styles} from '../cssObjects';
