@@ -64,10 +64,10 @@ function WebSocketUtility() {
       })
 
     socket.on('gameState', newGameState => {
-      console.log('gamestate:', gameState)
-      if (newGameState !== gameState) {
+      // console.log('gamestate:', gameState)
+      // if (newGameState !== gameState) {
         setGameState(newGameState);
-      }
+      // }
     });
 
     socket.on('updateMessage', newMessages => {
