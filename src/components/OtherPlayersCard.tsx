@@ -63,15 +63,17 @@ const OtherPlayersCard = ({messages}) => {
   }
   const renderOthers = () => {
     return others.map(({name}) => {
-      return (
-        <div className="eachlistOther" key={name} style={listStyle}>
+      if(name) {
+        return (
+          <div className="eachlistOther" key={name} style={listStyle}>
           <div className="ListName" style={{textAlign: 'center', marginBottom: '10px'}}>{name}</div>
           <OthersGameSheet name={name}/>
-        </div>
-      )
+          </div>
+        )
+      }
     })
   }
-
+  
 
   const showMessages = () => {
     if (!messages.length) return;

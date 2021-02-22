@@ -15,7 +15,7 @@ import { findOthers } from '../service/parseTeams';
 const GameSheet = () => {
   const {user} = useContext(UserContext);
   const userAnswers = useContext (UserAnswersContext);
-  const [list, setList] = CategoryContext.useCategpry();
+  const [list, setList] = CategoryContext.useCategory();
   const [teams, setTeams] = TeamsContext.useTeams();
   const { name, team } = user;
   const [answers, setAnswers] = useState(new Map());

@@ -31,7 +31,7 @@ function WebSocketUtility() {
 
   const [gameState, setGameState] =GameStateContext.useGameState();
   const [currentLetter, setCurrentLetter] = LetterContext.useLetter();
-  const [categories, setCategories] = CategoryContext.useCategpry();
+  const [categories, setCategories] = CategoryContext.useCategory();
   const [timer, setTimer] = TimerContext.useTimer();
   const [messages, setMessages] = useState([]);
 

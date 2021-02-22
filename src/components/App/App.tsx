@@ -23,6 +23,7 @@ function App({ myTeam }): JSX.Element {
     const final = stringify(userAnswers);
     socket.emit('FinalAnswer', { team: myTeam, answers: final });
     userAnswers.clear();
+    setMessages([]);
   }
 
   const showCorrectPage = () => {
