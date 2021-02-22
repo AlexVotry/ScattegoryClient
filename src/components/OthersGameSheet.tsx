@@ -1,5 +1,4 @@
 // shows the scategory list for each team.
-
 import React, { useContext, useState, useEffect } from 'react';
 import { isEmpty } from 'lodash';
 
@@ -51,7 +50,6 @@ const OthersGameSheet = (props) => {
   const displayGuess = (guess, index) => {
     if (!guess) return;
     const highlight = isChecked[index] ? { color: 'white'} : { color: colors.BlueGray};
-    console.log('ischecked:', isChecked[index])
     return (
       <>
         <input className="with-gap blueGrey" style={answerStyle} name={guess} value={`${index}^${guess}`} type="checkbox" id={index} onChange={e => handleChange(e)} />
@@ -60,7 +58,6 @@ const OthersGameSheet = (props) => {
     )
   }
   const updateUserAnswers = (index: number, value: string) => {
-    // const index = pad(i);
     const temp = userAnswers.userAnswers;
     if (temp.has(index)) temp.delete(index);
     temp.set(index, value);

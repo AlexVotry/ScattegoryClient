@@ -52,7 +52,6 @@ const ControlButtons = () => {
       <a className="waves-effect waves-red btn" onClick={createTeams} style={teamBtn} >Create Teams</a>
     </div>
   )
-  // return <div>why is this happening?</div>
 }
 
 export default ControlButtons;

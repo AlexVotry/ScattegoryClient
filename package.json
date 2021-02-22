@@ -2,10 +2,9 @@
   "name": "scattegories",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
     "dev": "webpack-dev-server --open",
-    "build": "webpack",
     "start": "node server.js",
     "heroku-postbuild": "webpack -p"
   },
@@ -13,28 +12,28 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.7.2",
-    "@babel/preset-env": "^7.7.1",
-    "@babel/preset-react": "^7.7.0",
-    "@babel/preset-typescript": "^7.7.2",
-    "@types/react": "^16.9.11",
-    "@types/react-dom": "^16.9.4",
-    "babel-loader": "^8.0.6",
+    "@babel/core": "^7.12.17",
+    "@babel/preset-env": "^7.12.17",
+    "@babel/preset-react": "^7.12.13",
+    "@babel/preset-typescript": "^7.12.17",
+    "@types/react": "^16.14.4",
+    "@types/react-dom": "^16.9.11",
+    "babel-loader": "^8.2.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "react-dom": "^16.11.0",
-    "socket.io-client": "^3.0.3",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0"
+    "react-dom": "^16.14.0",
+    "socket.io-client": "^3.1.1",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "css-loader": "^5.0.1",
+    "css-loader": "^5.0.2",
     "express": "^4.17.1",
     "lodash": "^4.17.20",
     "path": "^0.12.7",
-    "react": "^16.11.0",
+    "react": "^16.14.0",
     "react-custom-scrollbars": "^4.2.1",
-    "react-select": "^3.1.0",
+    "react-select": "^3.2.0",
     "style-loader": "^2.0.0"
   }
 }

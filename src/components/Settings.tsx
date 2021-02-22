@@ -1,5 +1,4 @@
 // settings has the join form, adjust timer, add categories, choose how many categories for the list.
-
 import React, { useState, useContext } from 'react';
 
 import UserContext from '../contexts/UserContext';
@@ -74,7 +73,6 @@ const Settings = () => {
     <div  >
       <a className="waves-effect waves-light btn" onClick={toggleForm} style={{float: 'right'}}>game settings</a>
       {showSettingsForm()}
-      {/* <a className="waves-effect waves-light btn" onClick={addCategories} >add a category</a> */}
     </div >
   )
 };

@@ -1,31 +1,26 @@
 // create scategory list.
 
-import React, { useContext, useRef, useEffect, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import CategoryContext from '../contexts/CategoryContext';
 import UserContext from '../contexts/UserContext';
 import FinalAnswersContext from '../contexts/FinalAnswersContext';
 import TeamScoreContext from '../contexts/TeamScoreContext';
 import socket from '../service/socketConnection';
-import { resetAnswersAndScores } from '../service/reset';
 import {pad, stringify, newMap} from '../service/strings';
 import {colors, styles} from '../cssObjects';
 import { isEmpty, isEqual } from 'lodash';
 
 const CategoryList = () => {
-  // const list = categoryList;  //mock data
-  // const finalAnswers = teamAnswer; //mock data
   const [list, setList] =CategoryContext.useCategpry();
   const [finalAnswers, setFinalAnswers] = FinalAnswersContext.useFinalAnswers();
   const {user} = useContext(UserContext);
   const [teamScores, setTeamScores] = TeamScoreContext.useTeamScore();
-  // const [score, setTeamScores] = useState({});
   let teamAnswers = Object.keys(finalAnswers);
   const columns = Math.floor(12 / (teamAnswers.length + 1));
   const col = `col s${columns}`;
   const teamTotals = {};
 
   const makeHeaders = () => {
-    console.log('categoryList')
     return teamAnswers.map((team) => {
       teamAnswers[team] = 0; // reset teamAnswer to 0 everytime we refresh.
       return (
@@ -99,7 +94,6 @@ const CategoryList = () => {
   }
 
   const showTeamTotals = () => {
-    // console.log('teamTotals:', teamTotals, 'teamScores:', teamScores)
     return teamAnswers.map((team) => {
       const currentScore = teamTotals[team] || 0;
       const total = finalAnswers[team].score + (currentScore);

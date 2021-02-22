@@ -1,17 +1,11 @@
 // displays the timer.
-
 import React, {useContext, useEffect, useState} from 'react';
+
 import TimerContext from '../contexts/TimerContext';
-import socket from '../service/socketConnection';
 import { pad } from '../service/strings'
 
-
-
 const Timer = () => {
-  // const [timer, setTimer] = useState(180);
   const [timer, setTimer] = TimerContext.useTimer();
-
-  
 
   const digitStyle = {
     display: 'inline-block'
@@ -19,7 +13,7 @@ const Timer = () => {
 
   const minStyle = {
     ...digitStyle,
-    width: '100px'
+    marginRight: '20px'
   } 
   const secStyle = {
     ...digitStyle,
@@ -28,16 +22,6 @@ const Timer = () => {
   const minutes = Math.floor(timer / 60);
   const min = minutes > 0 ? `${minutes} : ` : '';
   const seconds = timer === 0 ? ' ' : pad(timer % 60).toString().split('');
-
-  // useEffect(() => {
-  //   let isCancelled = false;
-  //   socket.on('Clock', clock => {
-  //     setTimer(clock);
-  //     return () => {
-  //       isCancelled = true;
-  //     };
-  //   });
-  // }, [])
 
   return (
     <div className="timer">
