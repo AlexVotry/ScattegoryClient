@@ -13,7 +13,7 @@ const OthersGameSheet = (props) => {
   const userAnswers = useContext(UserAnswersContext);
   const [otherGuesses, setOtherGuesses] = OtherGuessesContext.useOtherGuesses();
   const {user} = useContext(UserContext);
-  const [list, setList] = CategoryContext.useCategpry();
+  const [list, setList] = CategoryContext.useCategory();
   const [guesses, setGuesses] = useState(new Map());
   const [isChecked, setIsChecked] = useState({})
  

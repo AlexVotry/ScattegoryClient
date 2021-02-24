@@ -11,7 +11,7 @@ import {colors, styles} from '../cssObjects';
 import { isEmpty, isEqual } from 'lodash';
 
 const CategoryList = () => {
-  const [list, setList] =CategoryContext.useCategpry();
+  const [list, setList] =CategoryContext.useCategory();
   const [finalAnswers, setFinalAnswers] = FinalAnswersContext.useFinalAnswers();
   const {user} = useContext(UserContext);
   const [teamScores, setTeamScores] = TeamScoreContext.useTeamScore();
