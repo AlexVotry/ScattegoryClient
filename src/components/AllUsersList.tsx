@@ -6,6 +6,7 @@ const AllUsersList = () => {
   const [allUsers, setAllUsers] = AllUsersContext.useAllUsers();
 
   const listOfUsers = () => {
+    if(!allUsers) return;
     return allUsers.map(player => {
       return (
         <li className="collection-item" key={player}>

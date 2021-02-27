@@ -49,19 +49,25 @@ const CategoryList = () => {
       const styledAnswer = displayAnswer(answer, team);
       return (
         <div className={col} key={`${team}_${index}`} style={{color: colors[team]}}>
-          <a style={{ color: colors[team] }} onClick={() => removePoint(team, index, answer)}>{styledAnswer}</a>
+          <a style={{ color: colors[team] }} onClick={() => togglePoint(team, index, answer)}>{styledAnswer}</a>
         </div>
       );
     })
   }
 
-  const removePoint = (team, index, answer) => {
-    const ans = `!${answer}`;
+  const togglePoint = (team, index, answer) => {
+    let ans;
+    if (answer.includes('!')) {
+      ans = answer.replace('!', '');
+      teamTotals[team] = teamTotals[team] + 1;
+    } else {
+      ans = `!${answer}`;
+      teamTotals[team] = teamTotals[team] - 1;
+    }
     finalAnswers[team].answers.set(index, ans);
-    teamTotals[team] = teamTotals[team] - 1;
     setTeamScores(teamTotals);
     serialize();
-    socket.emit('failedAnswer', finalAnswers);
+    socket.emit('failedAnswer', {answers: finalAnswers, group: user.group});
     deserialize()
   }
 
@@ -100,7 +106,7 @@ const CategoryList = () => {
       teamTotals[team] = total;
       if (!isEqual(teamTotals, teamScores)) {
         setTeamScores(teamTotals);
-        socket.emit('updateScores', { score: teamTotals[user.team], team: user.team });
+        socket.emit('updateScores', { score: teamTotals[user.team], team: user.team, group: user.group });
       }
       return (
         <div className={col} key={team} style={{ color: colors[team] }}>

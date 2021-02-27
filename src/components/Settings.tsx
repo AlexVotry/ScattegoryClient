@@ -30,7 +30,7 @@ const Settings = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setDisplay('none');
-    socket.emit('gameChoices', {timer, categories});
+    socket.emit('gameChoices', {timer, categories, group: user.group});
   }
   
   const handleChange = (e, state) => {

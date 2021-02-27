@@ -6,6 +6,10 @@ import { pad } from '../service/strings'
 
 const Timer = () => {
   const [timer, setTimer] = TimerContext.useTimer();
+  let clock = "timer";
+  if (timer < 11) {
+    clock = "blink";
+  }
 
   const digitStyle = {
     display: 'inline-block'
@@ -23,8 +27,10 @@ const Timer = () => {
   const min = minutes > 0 ? `${minutes} : ` : '';
   const seconds = timer === 0 ? ' ' : pad(timer % 60).toString().split('');
 
+  if (timer === 0) return <div></div>
+
   return (
-    <div className="timer">
+    <div className={clock}>
       <div style={{float: 'right'}}>
         <span style={minStyle}>{min}</span>
         <span style={secStyle}>{seconds[0]}</span>

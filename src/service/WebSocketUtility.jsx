@@ -20,6 +20,7 @@ import TimerContext from '../contexts/TimerContext';
 function WebSocketUtility() { 
   const [teams, setTeams] = TeamsContext.useTeams();
   const [myTeam, setMyTeam] = useState('');
+  const [myGroup, setMyGroup] = useState('');
 
   const user = useContext(UserContext);
   const userInfo = user.user;
@@ -57,9 +58,10 @@ function WebSocketUtility() {
         const newUser = { ...localState, team };
         user.update(newUser);
         setMyTeam(team);
+        setMyGroup(userInfo.group);
         localStorage.removeItem('userInfo');
         localStorage.setItem('userInfo', JSON.stringify(newUser));
-        socket.emit('myTeam', team);
+        socket.emit('myTeam', {team, group: myGroup});
       })
 
     socket.on('gameState', newGameState => {
@@ -73,6 +75,7 @@ function WebSocketUtility() {
     socket.on('Clock', clock => setTimer(clock));
 
     socket.on('AllSubmissions', finalSubmissions => {
+      console.log('final:', finalSubmissions);
       const teamArray = Object.keys(finalSubmissions);
       setGameState('ready');
       setOtherGuesses({});
@@ -106,7 +109,7 @@ function WebSocketUtility() {
 
   return (
     <div>
-    <App myTeam={myTeam}/>
+    <App myTeam={myTeam} myGroup={myGroup} />
     </div>
   )
 }
