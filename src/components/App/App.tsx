@@ -13,7 +13,7 @@ import socket from '../../service/socketConnection';
 import { styles } from '../../cssObjects';
 import { stringify } from '../../service/strings';
 
-function App({ myTeam }): JSX.Element {
+function App({ myTeam, myGroup }): JSX.Element {
   const [gameState, setGamestate] = GameStateContext.useGameState();
   const {userAnswers} = useContext(UserAnswersContext);
   const [messages, setMessages] = useState([]);
@@ -21,7 +21,7 @@ function App({ myTeam }): JSX.Element {
     // send answers to server
   if (gameState === 'ready' && userAnswers.size) {
     const final = stringify(userAnswers);
-    socket.emit('FinalAnswer', { team: myTeam, answers: final });
+    socket.emit('FinalAnswer', { team: myTeam, answers: final, group: myGroup });
     userAnswers.clear();
     setMessages([]);
   }

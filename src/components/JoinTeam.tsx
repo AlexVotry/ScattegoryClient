@@ -20,11 +20,11 @@ const JoinTeam = () => {
     setAdmin(e.target.checked);
   }
 
-  // const bypassSignin = e => {
-  //   setCheckedIn(e.target.checked);
-  //   socket.emit('initJoin', localState);
-  //   user.update(localState);
-  // }
+  const bypassSignin = e => {
+    setCheckedIn(e.target.checked);
+    socket.emit('initJoin', localState);
+    user.update(localState);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,12 +45,12 @@ const JoinTeam = () => {
     <div className="row joinTeam">
 
       <form className="col s12" onSubmit={handleSubmit}>
-        {/* <div>
+        <div>
           <p>
             <input className="with-gap" name="checkedIn" type="checkbox" id="checkedIn" onChange={bypassSignin} />
             <label htmlFor="checkedIn">Already joined a team</label>
           </p>
-        </div> */}
+        </div>
         <div className="input-field col s12">
           <input id="group"
             type="text"

@@ -52,9 +52,13 @@ const OtherPlayersCard = ({messages}) => {
     width: scrollWidth,
     height: '70vh'
   }
+
+  const noDisplay = {
+    display: 'none'
+  }
   
   const renderOtherGameCard = () => {
-    if (!others.length) return <div></div>;
+    if (others.length <=1) return <div></div>
     return (
       <div id="otherPlayers" className="otherPlayers" style={cardStyle} >
       {renderOthers()}

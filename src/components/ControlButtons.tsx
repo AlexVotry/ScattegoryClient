@@ -12,6 +12,7 @@ const ControlButtons = () => {
   const gameState = GameStateContext.useGameState();
   const [teams, setTeams] = TeamsContext.useTeams();
   const {user} = useContext(UserContext);
+  const {group} = user;
   let teamBtn = {display: 'inline-block'};
   let otherBtns = {display: 'none'};
 
@@ -27,20 +28,20 @@ const ControlButtons = () => {
   const btnStyle = gameState === 'running' ? runningBtns : otherBtns;
 
   const start = () => {
-    socket.emit('changeGameState', 'running');
+    socket.emit('changeGameState', { state: 'running', group });
   }
   const pause = () => {
-    socket.emit('pushPause', 'paused');
+    socket.emit('pushPause', group);
   }
   const reset = () => {
-    socket.emit('reset', 'reset');
+    socket.emit('reset', group);
   }
   const startOver = () => {
-    socket.emit('changeGameState', 'startOver');
+    socket.emit('changeGameState', { state: 'startOver', group });
   }
 
   const createTeams = () => {
-    socket.emit('createTeams', true);
+    socket.emit('createTeams', group);
   }
   if (!user.admin) return <div className="noAdmin"></div>;
   return (

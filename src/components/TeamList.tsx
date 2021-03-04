@@ -36,10 +36,10 @@ function TeamList(): JSX.Element {
   }
 
   const parseTeamMembers = (members) => {
-    return members.map(member => {
+    return members.map((member, index) => {
       if (typeof member !== "number") {
         return (
-          <li key={member.name} style={{marginRight: '30px'}}>{member.name}</li>
+          <li key={index} style={{marginRight: '30px'}}>{member.name}</li>
         )
       }
     })

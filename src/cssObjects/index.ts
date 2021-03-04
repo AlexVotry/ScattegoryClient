@@ -10,6 +10,22 @@ export const colors = {
   BlueGray: '#37474f'
 }
 
+export const textColors = {
+  Blue: '#fff',
+  Red: '#fff',
+  Green: '#fff',
+  Purple: '#fff',
+  Gold: '#674172',
+}
+
+export const highlight = {
+  Blue: '#f2d984',
+  Red: '#f2d984',
+  Green: '#f2d984',
+  Purple: '#f2d984',
+  Gold: '#96281b',
+}
+
 export const styles = {
   flexRow: <CSSProperties> {
     display: 'flex',

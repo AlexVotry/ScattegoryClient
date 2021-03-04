@@ -3,14 +3,13 @@
 import React, { useContext } from 'react';
 import GameSheet from './GameSheet';
 import UserContext from '../contexts/UserContext';
-import { styles, colors } from '../cssObjects';
+import { styles, colors, textColors } from '../cssObjects';
 
 const CurrentPlayerCard = () => {
   const {user} = useContext(UserContext);
-  const textColor = user.team === 'Gold' ? colors.Green : colors.White;
   const cardStyle = {
     backgroundColor: colors[user.team],
-    color: textColor,
+    color: textColors[user.team],
     marginRight: '10px',
     padding: '10px 10px 0 10px',
     height: '70vh',
