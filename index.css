@@ -119,7 +119,7 @@ h4 {
   background-color: #37474f;
 }
 
-.blueGrey:checked + label:before {
+.purple:checked + label:before {
   top: -4px;
   left: -3px;
   width: 12px;
@@ -128,6 +128,18 @@ h4 {
   border-left: 2px solid transparent;
   border-right: 2px solid #546e7a; 
   border-bottom: 2px solid #546e7a; 
+  transform: rotate(40deg);
+  transform-origin: 100% 100%; }
+
+.white:checked + label:before {
+  top: -4px;
+  left: -3px;
+  width: 12px;
+  height: 22px;
+  border-top: 2px solid transparent;
+  border-left: 2px solid transparent;
+  border-right: 2px solid #fff; 
+  border-bottom: 2px solid #fff; 
   transform: rotate(40deg);
   transform-origin: 100% 100%; }
 

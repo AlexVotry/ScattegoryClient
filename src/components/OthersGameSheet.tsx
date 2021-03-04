@@ -7,7 +7,7 @@ import UserAnswersContext from '../contexts/UserAnswersContext';
 import OtherGuessesContext from '../contexts/OtherGuessesContext';
 import UserContext from '../contexts/UserContext';
 import {pad} from '../service/strings';
-import {colors} from '../cssObjects';
+import {colors, textColors, highlight} from '../cssObjects';
 
 const OthersGameSheet = (props) => {
   const userAnswers = useContext(UserAnswersContext);
@@ -49,11 +49,12 @@ const OthersGameSheet = (props) => {
   
   const displayGuess = (guess, index) => {
     if (!guess) return;
-    const highlight = isChecked[index] ? { color: 'white'} : { color: colors.BlueGray};
+    const boxColor = user.team === "Gold" ? "purple" : "white";
+    const othersText = isChecked[index] ? { color: highlight[user.team]} : { color: textColors[user.team]};
     return (
       <>
-        <input className="with-gap blueGrey" style={answerStyle} name={guess} value={`${index}^${guess}`} type="checkbox" id={index} onChange={e => handleChange(e)} />
-        <label style={highlight} htmlFor={index}>{guess}</label>
+        <input className={`with-gap ${boxColor}`} style={answerStyle} name={guess} value={`${index}^${guess}`} type="checkbox" id={index} onChange={e => handleChange(e)} />
+        <label style={othersText} htmlFor={index}>{guess}</label>
       </>
     )
   }

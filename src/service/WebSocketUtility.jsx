@@ -53,10 +53,15 @@ function WebSocketUtility() {
 
     socket.on('newTeams', newTeams => {
         setTeams(newTeams);
-        const localState = userInfo;
-        const team = !isEmpty(localState) ? assignTeam(newTeams, localState) : null;
-        const newUser = { ...localState, team };
-        user.update(newUser);
+        let newUser = userInfo;
+        let team;
+        if (!newUser.team) {
+          team = !isEmpty(newUser) ? assignTeam(newTeams, newUser) : null;
+          newUser = { ...newUser, team };
+          user.update(newUser);
+        } else {
+          team = newUser.team;
+        }
         setMyTeam(team);
         setMyGroup(userInfo.group);
         localStorage.removeItem('userInfo');
@@ -75,7 +80,6 @@ function WebSocketUtility() {
     socket.on('Clock', clock => setTimer(clock));
 
     socket.on('AllSubmissions', finalSubmissions => {
-      console.log('final:', finalSubmissions);
       const teamArray = Object.keys(finalSubmissions);
       setGameState('ready');
       setOtherGuesses({});

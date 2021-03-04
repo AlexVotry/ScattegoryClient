@@ -8,7 +8,7 @@ import UserContext from '../contexts/UserContext';
 import TeamsContext from '../contexts/TeamsContext';
 import UserAnswersContext from '../contexts/UserAnswersContext';
 import socket from '../service/socketConnection';
-import { colors, styles } from '../cssObjects';
+import { colors, styles, textColors } from '../cssObjects';
 import { pad } from '../service/strings';
 import { findOthers } from '../service/parseTeams';
 
@@ -24,7 +24,6 @@ const GameSheet = () => {
   const others = findOthers(teams[user.team], user);
 
   const bgColor = user.team === "Gold" ? 'grey' : 'white';
-  const textColor = user.team === 'Green' ? 'teamGreen' : '';
 
   const messageBackground = {
     color: colors[user.team],
@@ -48,7 +47,7 @@ const GameSheet = () => {
     if (answers.has(index)) answers.delete(index);
     setAnswers(new Map(answers.set(index, val)));
     const i = `${pad(index)}_${name}`;
-    if (!others.length) {
+    if (others.length <= 1) {
       updateUserAnswers(i, val);
     } else {
       const guesses = { answers: [i, val], name };
@@ -96,7 +95,7 @@ const GameSheet = () => {
   return (
     <div className="gameSheet" style={{padding: '0 10px'}}>
       <form className="messageForm" onSubmit={updateMessage}>
-        <div className={`input-field ${textColor}`}>
+        <div className={`input-field ${textColors[user.team]}`}>
           <i className="material-icons prefix">chat</i>
           <input
             style ={messageBackground}
